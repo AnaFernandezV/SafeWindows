@@ -1,0 +1,266 @@
+body{
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fdfdfd;
+}
+header{
+  width: 100%;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  background-image: url("/src/assets/img/header-fondo.png");
+ 
+}
+p{
+  font-size: 15px;
+}
+
+p a {
+  font-size:15px;
+  font-weight: bold;
+  font-stretch: ultra-expanded;
+  text-decoration: none;
+  padding:5px 0 0 0;
+  color: #010101;
+  }
+
+p a:hover {
+  color: #3c3939; 
+  }
+h1{
+  font-size: 22px;
+  margin:0 0 0px 0;
+  padding: 2% 0 2% 0;
+  text-align: center;
+  color: #171616;
+}
+
+h2{
+  font-size: 20px;
+  margin:0 0 0px 0;
+  padding: 1% 0 3% 0;
+  text-align: center;
+  }
+
+h4{
+  text-align: center;
+  margin: 7% 10% 7% 0; 
+
+}
+.haztucotizacion {
+  background-color: #3c3939;
+  width: 260px;
+  border: none;
+  padding: 15px 32px;
+  margin: 5% 0 10% 20% ;
+  text-align: center;
+  text-decoration: none;
+  display: inline-table;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+.haztucotizacion a{
+  font-size:18px;
+  color: #ffffff;
+  font-weight: bold;
+  font-stretch: ultra-expanded;
+  text-decoration: none;
+  padding:15px;
+}
+
+.logo img{
+  width: 80px;
+  height: auto;
+  margin: 30px 0 0 12%;
+  padding: 0;
+  float: left;
+}
+/******Menu*****/
+.navig {
+  box-sizing:border-box;
+  margin: 30px 5% 0 auto;
+  float: right;
+}
+.navig ul{
+  padding:0;
+  list-style:none;
+  }
+.navig li {
+  display:inline;
+}
+.navig a {
+  font-size:20px;
+  font-weight: bold;
+  font-stretch: ultra-expanded;
+  text-decoration: none;
+  padding:15px;
+  color: #fff;
+}
+
+.navig a:hover {
+  background-color: #fdfdfd;
+  color:#000000;
+  opacity: 0.4;
+}
+
+.navig a:active {
+  background-color: #eeeeee;
+
+}
+
+/********contenido index**********/
+#quienes-somos-index{
+  width: 90%;
+  height: auto;
+  background-color: #e4f7f6;
+  color: #161616;
+  padding: 5% 5% ;
+}
+
+#quienes-somos-index p{
+  margin: 10px 60px;
+
+}
+/*******como cotizar*********/
+#como-cotizar{
+  width: 100%;
+  height: auto;
+  color: #161616;
+  padding: 0;
+  padding: 5% 0 6% 0; 
+}
+
+.iconos-contenido{
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  padding: 30px 0 0 0 ;
+}
+
+.iconos-contenido li{
+  padding: 0 30px;
+  flex-basis: 15%;
+  text-align: center;
+  list-style: none;
+}
+
+.iconos-contenido img{
+  width: 80px;
+  height: auto;
+  margin: 0 ;
+  transform:
+  rotateX(0deg)
+  rotateZ(0deg);
+  transform-style: preserve-3d;  
+  transition:
+  .5s ease-in-out transform;
+
+}
+.iconos-contenido img:hover{
+  transform:translate3d(0px, -16px, 0px)
+    rotateX(0deg)
+    rotateY(180deg); 
+}
+/******footer**********/
+footer{
+  width: 100%;
+  height:auto;
+  background-color: #262544;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.footer-izq{
+  width:50%;
+  height: auto;
+  float: left;
+  
+}
+
+.footer-izq img{
+  width: 210px;
+  height: auto;
+  margin: 30px 0px 0 10%;
+  padding: 0px;
+}
+
+.parrafo-footer{
+  width: 60%;
+  height: auto;
+  margin: 0 0 0 10%;
+  padding: 0;
+
+}
+.footer-der{
+  width: 50%;
+  height: auto;
+  float: right;
+}
+
+.footer-der img{
+  width: 40px;
+  padding: 3% 10px 0 10px ;
+  height: auto;
+  margin: -15px 10px; 
+}
+
+.footer-der ul{
+  list-style: none;
+}
+.footer-der li{
+  display: inline;
+}
+
+.footer-der a{
+  text-decoration: none;
+  color: #fff;
+}
+
+.footer-centro{
+  width: 100%;
+  height: auto;
+  text-align:center;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-centro p{
+  margin: 4% 0 2% 0;
+}
+
+.btn-mail{
+  border: 1px solid; 
+  padding: 6px 18px; 
+  color: #ffffff;
+  text-decoration: none; 
+  border-radius: 10px;   
+  cursor: pointer; 
+}
+.v-line{
+  border-left: 2px solid #bcc4c6 ;
+  height:25%;
+  left: 48%;
+  margin: 5% 0 0 0;
+  position: absolute;
+ }
+ 
+.contenido{
+  width: 100%;
+  height: auto;
+  padding: 0 0 5% 0;
+  margin: 0;
+ }
