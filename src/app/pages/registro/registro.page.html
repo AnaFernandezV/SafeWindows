@@ -1,0 +1,94 @@
+<ion-content> 
+  <div id="wrap">
+  <ion-header>
+    <header>
+      <div class="logo" routerLink="/home"> <img src="../../../assets/img/logo-con-letras.png"></div>
+      <div id="menu-adaptado" >
+        <ul>
+          <li class="burger" (click)="toggleMenu()"> 
+            <i class="material-icons">{{ isMenuOpen ? "close" : "menu" }}</i>
+          </li>
+        <li class="menu" [class.is-open]="isMenuOpen">        
+          <a routerLink="/home" class="menu-item">Inicio</a>
+          <a routerLink="/quienes-somos" class="menu-item">Quiénes somos</a>
+          <a routerLink="/nuestros-trabajos" class="menu-item">Nuestro trabajos</a>
+          <a routerLink="/catalogo" class="menu-item">Catálogo</a>       
+          <a  routerLink="/registro" class="menu-item">Registrate</a>
+          <a  routerLink="/iniciar-sesion" class="menu-item" >Ingresar</a>        
+          <div routerLink="/detalle-cotizacion" id="cart" class="cart" data-totalitems="0">
+            <img src="../../../assets/img/cart-icon.png">
+          </div><!---cierre logo carrito-->
+        </li> <!----cierre menu-->
+      </ul> 
+      
+      </div><!--CIERRE MENU -->
+      
+  
+      <div class="haztucotizacion" routerLink="/catalogo"><a>Haz tú cotización</a></div>
+     
+  
+  </header>
+  </ion-header>
+  <div id="contenido">
+    <h1>Registro Empresa</h1>
+   <div class="container">
+    
+    <form  [formGroup]="empresa" (ngSubmit)="submitFormulario()" >      
+      <div class="form-group">
+        <label for="nombre-empresa" >Nombre Empresa</label>
+        <input type="text" id="nombre-empresa" minlength="3" formControlName="nom_empresa" placeholder="Ingrese Nombre de su empresa">
+      </div>
+    <div class="form-group">
+      <label for="rut-empresa">Rut Empresa</label>
+      <input type="text" id="rut-empresa" maxlength="12" formControlName="rut"  placeholder="Ingrese Rut con puntos y guión">
+    </div>
+    <div class="form-group">
+      <label for="telefono" >Teléfono</label>
+      <input type="tel" id="telefono" formControlName="telefono" placeholder="Ingrese número de teléfono">
+     
+    </div>
+    <div class="form-group">
+      <label for="correo">Correo Electrónico</label>
+      <input type="email" id="correo"  formControlName="correo" placeholder="Ingrese correo: ej:correo@gmail.com">
+    </div>
+    <div class="form-group">
+      <label for="direccion">Dirección</label>
+      <input type="text" id="direccion"  formControlName="direccion" placeholder="Ingrese Dirección">
+    </div>
+
+<!--     <div class="form-group">
+      <label for="confirmar-contrasena">Confirmar Contraseña:</label>
+      <input type="password" id="confirmar-contrasena" placeholder="Confirme contraseña" >
+    </div> -->
+    
+    <button type="submit" >Registrarse</button>
+
+   
+  </form>  
+  
+   </div><!--------cierre container formulario------>
+   
+  </div><!--------CIERRE CONTENIDO-------->
+   <footer>
+
+    <div class="footer-izq">
+  
+      <img src="../../../assets/img/logo-footer.png">
+      <div class="parrafo-footer" ><p>Con 2 años de experiencia fabricando ventanas de la mejor calidad.</p></div>
+      <div class="faq" ><img src="../../../assets/img/faq.png"><a routerLink="/preguntas-frecuentes">Preguntas Frecuentes</a></div>
+  
+    </div>
+    <div class="v-line"></div>
+  
+    <div class="footer-der">
+      <h4>Contáctanos</h4>
+      <ul>
+        <li><img src="../../../assets/img/whatsapp.png">+56 965789532</li>
+        <li><img src="../../../assets/img/correo.png"> <a class="btn-mail" routerLink="/contacto">Contáctanos</a></li>
+      </ul>
+    </div>
+    <div class="footer-centro"><p>Derechos Reservados Ventanas Técnicas 2023 ©</p></div>
+   </footer> 
+  </div><!-----CIERRE WRAP------>
+  </ion-content>
+  

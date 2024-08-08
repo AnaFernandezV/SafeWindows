@@ -1,0 +1,79 @@
+<ion-content> 
+  <div id="wrap">
+  <ion-header>
+   
+      <div id="intranet">    
+         
+        <ul>
+          <li> <!-- BIenvenido : {{logeado.user.username}}   -->  </li>
+          
+        </ul>
+        <div class="logo-intranet"> <img src="../../../assets/img/logo-footer.png"></div>
+      </div><!------cierre div intranet header-------->
+  
+
+  </ion-header>
+
+  <div id="contenido">
+    <h1>Agregar Material</h1>
+    <div class="caja-formulario">
+    
+      <form [formGroup]="material"  (ngSubmit)="insDatos()" >      
+        <div class="form-group">
+          <label for="nopmbrematerial">Nombre Material</label>
+          <input type="text" id="nombre-material" placeholder="Ingrese nombre del producto "  formControlName="nom_material">
+        </div>
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <input type="text" id="descripcion"    placeholder="Ingrese descripción del producto " formControlName="descripcion">
+      </div>
+      <div class="form-group">
+        <label for="tipo" >Tipo</label>
+        <select type="select" formControlName="tipo"  id="instalacions">
+        <option value="Estructural">Estructural</option>     
+        <option value="Vidrio">Vidrio</option>               
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="precio">Precio Metro Cuadrado</label>
+        <input type="number" id="precio" placeholder="Ingrese el precio del metro cuadrado" formControlName="precio">
+      </div>
+     
+
+      <div class="espacio-entre">
+        <button type="submit" class="botoncito btn-agregar-modulo">AGREGAR</button>
+          <button class="botoncito btn-volver" routerLink="/admin/">VOLVER </button>
+      </div>
+
+    </form>  
+
+
+   
+    
+     </div><!--------cierre container formulario------>
+  
+    
+  </div><!--------CIERRE CONTENIDO-------->
+   <footer>
+
+    <div class="footer-izq">
+  
+      <img src="../../../assets/img/logo-footer.png">
+      <div class="parrafo-footer" ><p>Con 2 años de experiencia fabricando ventanas de la mejor calidad.</p></div>
+      <div class="faq" ><img src="../../../assets/img/faq.png"><a routerLink="/preguntas-frecuentes">Preguntas Frecuentes</a></div>
+  
+    </div>
+    <div class="v-line"></div>
+  
+    <div class="footer-der">
+      <h4>Contáctanos</h4>
+      <ul>
+        <li><img src="../../../assets/img/whatsapp.png">+56 965789532</li>
+        <li><img src="../../../assets/img/correo.png"> <a class="btn-mail" routerLink="/contacto">Contáctanos</a></li>
+      </ul>
+    </div>
+    <div class="footer-centro"><p>Derechos Reservados Ventanas Técnicas 2023 ©</p></div>
+   </footer> 
+  </div><!-----CIERRE WRAP------>
+  </ion-content>
+  

@@ -1,0 +1,62 @@
+#quienes-somos{
+  width: 100%;
+  height: auto;
+  color: #161616;
+  padding: 2% 0 5% 0;
+  background-color:#FFF;
+
+  p{
+    margin: 10px 60px;
+  
+  }
+}
+
+#personal{
+  width: 100%;
+  height: auto;
+  color: #161616;
+  padding: 2% 0 5% 0;
+  background-color: #e4f7f6;
+  p{
+    font-weight: bold;
+  }
+
+}
+
+.fotos{
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  padding: 30px 0 0 0 ;
+
+  li{
+    padding: 0 30px;
+    flex-basis: 20%;
+    text-align: center;
+    list-style: none;
+  }
+  img{
+    width: 120px;
+    height: auto;
+    margin: 0 ;
+    transform:
+    rotateX(0deg)
+    rotateZ(0deg);
+    transform-style: preserve-3d;  
+    transition:
+    .5s ease-in-out transform;
+    
+  
+  }
+  img:hover{
+  transform:translate3d(0px, -16px, 0px)
+    rotateX(0deg)
+    rotateY(180deg); 
+}
+
+}

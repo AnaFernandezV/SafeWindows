@@ -1,0 +1,62 @@
+<ion-content> 
+  <div id="wrap">
+  <ion-header>
+ 
+      <div id="intranet">    
+         
+        <ul>
+          <li> <!-- BIenvenido : {{logeado.user.username}}   -->  </li>
+          
+        </ul>
+        <div class="logo-intranet"> <img src="../../../assets/img/logo-footer.png"></div>
+      </div><!------cierre div intranet header-------->
+  
+  
+ 
+  </ion-header>
+  <div id="contenido">
+    <h1>Agregar credencial</h1>
+    <div class="caja-formulario">
+    
+      <form [formGroup]="credencial" >
+        <div class="form-group">
+          <label for="nombre-credencial">Nombre Credencial</label>
+          <input type="text" id="nombre-credencial" placeholder="Ingrese nombre de la credencial" formControlName="username"  >
+        </div>
+      <div class="form-group">
+        <label for="tipoUsuario">Tipo Usuario</label>
+        <input type="text" id="tipo" placeholder="Ej: Admin " formControlName="tipo">
+      </div>
+  
+    <div class="espacio-entre">
+      <button type="submit" class="botoncito btn-agregar-modulo"  >AGREGAR</button>
+      <button class="botoncito btn-volver" routerLink="/admin/">VOLVER </button>
+    </div><!----cierre botones-->
+
+  </form>
+     </div><!--------cierre container formulario------> 
+    
+  </div><!--------CIERRE CONTENIDO-------->
+   <footer>
+
+    <div class="footer-izq">
+  
+      <img src="../../../assets/img/logo-footer.png">
+      <div class="parrafo-footer" ><p>Con 2 años de experiencia fabricando ventanas de la mejor calidad.</p></div>
+      <div class="faq" ><img src="../../../assets/img/faq.png"><a routerLink="/preguntas-frecuentes">Preguntas Frecuentes</a></div>
+  
+    </div>
+    <div class="v-line"></div>
+  
+    <div class="footer-der">
+      <h4>Contáctanos</h4>
+      <ul>
+        <li><img src="../../../assets/img/whatsapp.png">+56 965789532</li>
+        <li><img src="../../../assets/img/correo.png"> <a class="btn-mail" routerLink="/contacto">Contáctanos</a></li>
+      </ul>
+    </div>
+    <div class="footer-centro"><p>Derechos Reservados Ventanas Técnicas 2023 ©</p></div>
+   </footer> 
+  </div><!-----CIERRE WRAP------>
+  </ion-content>
+  

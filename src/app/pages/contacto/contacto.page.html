@@ -1,0 +1,76 @@
+<ion-content>
+  <div id="wrap">
+    <ion-header>
+      <header>
+        <div class="logo" routerLink="/home"> <img src="../../../assets/img/logo-con-letras.png"></div>
+        <div id="menu-adaptado" >
+          <ul>
+            <li class="burger" (click)="toggleMenu()"> 
+              <i class="material-icons">{{ isMenuOpen ? "close" : "menu" }}</i>
+            </li>
+          <li class="menu" [class.is-open]="isMenuOpen">        
+            <a routerLink="/home" class="menu-item">Inicio</a>
+            <a routerLink="/quienes-somos" class="menu-item">Quiénes somos</a>
+            <a routerLink="/nuestros-trabajos" class="menu-item">Nuestro trabajos</a>
+            <a routerLink="/catalogo" class="menu-item">Catálogo</a>       
+            <a *ngIf="logeado && logeado.id === 0" routerLink="/registro" class="menu-item">Registrate</a>
+            <a  *ngIf="logeado && logeado.id === 0" routerLink="/iniciar-sesion" class="menu-item" >Ingresar</a>
+            <a  *ngIf="logeado && logeado.tipo === 'admin'" routerLink="/admin" class="menu-item" >Admin</a>
+            <div routerLink="/detalle-cotizacion" id="cart" class="cart" data-totalitems="0">
+              <img src="../../../assets/img/cart-icon.png">
+            </div><!---cierre logo carrito-->
+          </li> <!----cierre menu-->
+        </ul> 
+        
+        </div><!--CIERRE MENU -->
+        <li *ngIf="logeado && logeado.id != 0" class="logoCerrarSesion"><img src="../../../assets/img/logout.png" (click)="logOut()"><p>Cerrar Sesión</p></li>   
+    
+        <div class="haztucotizacion" routerLink="/catalogo"><a>Haz tú cotización</a></div>
+       
+    
+    </header>
+    </ion-header> 
+
+  <div id="contacto">
+    <h1>Contáctanos</h1>
+  <form >
+
+    
+    <label for="email" style="display:none">Para:</label>
+    <input type="email" [(ngModel)]="to" id="name" name="email" type="hidden" required>
+      
+    <label for="email">De:</label>
+    <input type="email" [(ngModel)]="email" id="email" name="email" required>
+
+    <label for="subject">Asunto:</label>
+    <input type="text" [(ngModel)]="subject" id="subject" name="subject" required>
+  
+    <label for="message">Mensaje:</label>
+    <textarea id="message" [(ngModel)]="text" name="message" required></textarea>
+  
+    <button type="submit" (click)="sendEmail()" >ENVIAR</button>
+  </form>
+</div>
+<footer>
+
+  <div class="footer-izq">
+
+    <img src="../../../assets/img/logo-footer.png">
+    <div class="parrafo-footer" ><p>Con 2 años de experiencia fabricando ventanas de la mejor calidad.</p></div>
+    <div class="faq" ><img src="../../../assets/img/faq.png"><a routerLink="/preguntas-frecuentes">Preguntas Frecuentes</a></div>
+
+  </div>
+  <div class="v-line"></div>
+
+  <div class="footer-der">
+    <h4>Contáctanos</h4>
+    <ul>
+      <li><img src="../../../assets/img/whatsapp.png">+56 965789532</li>
+      <li><img src="../../../assets/img/correo.png"> <a class="btn-mail" routerLink="/contacto">Contáctanos</a></li>
+    </ul>
+  </div>
+  <div class="footer-centro"><p>Derechos Reservados Ventanas Técnicas 2023 ©</p></div>
+ </footer> 
+</div><!-------CIERRE WRAP------>
+  </ion-content>
+  

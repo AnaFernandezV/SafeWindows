@@ -1,0 +1,80 @@
+<ion-content> 
+  <div id="wrap">
+  <ion-header>
+   
+      <div id="intranet">
+        
+         
+        <ul>
+          <li> <!-- BIenvenido : {{logeado.user.username}}   -->  </li>   
+         
+          
+        </ul>
+        <div class="logo-intranet"> <img src="../../../assets/img/logo-footer.png"></div>
+        
+      </div><!------cierre div intranet header-------->
+  
+
+  </ion-header>
+  <div id="contenido">
+    <h1>Modificar mano obra</h1>
+    <div class="caja-formulario">
+    
+      <form [formGroup]="mano_obra" (ngSubmit)="modMano()">      
+        <div class="form-group">
+          <label for="nombre-empleado">Nombre Empleado</label>
+          <input type="text" id="nombre-empleado" placeholder="Ingrese nombre empleado "  formControlName="nom_mano">
+        </div>
+      <div class="form-group">
+        <label for="apellido">Apellido Empleado</label>
+        <input type="text" id="apellido" placeholder="Ingrese apellido empleado" formControlName="ape_mano">
+      </div>
+      <div class="form-group">
+        <label for="rut">Rut</label>
+        <input type="text" id="rut" placeholder="Ej:18.584.843-4" formControlName="rut">
+      </div>
+      <div class="form-group">
+        <label for="correo">Correo</label>
+        <input type="text" id="correo" placeholder="Ej:correo@gmail.com" formControlName="correo">
+      </div>
+      <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input type="number" id="telefono" placeholder="Ej: 9747458538" formControlName="telefono">
+      </div>
+      <div class="form-group">
+        <label for="especialidad">Especialidad</label>
+        <input type="text" id="especialidad" placeholder="Ingrese Especialidad" formControlName="especialidad">
+      </div>
+  
+      <div class="espacio-entre">
+        <button type="submit" class="botoncito btn-agregar-modulo">MODIFICAR</button>
+        <button class="botoncito btn-volver" routerLink="/admin/">VOLVER </button>
+      </div><!----cierre botones-->
+
+    </form>      
+     </div><!--------cierre container formulario------> 
+    
+  </div><!--------CIERRE CONTENIDO-------->
+   <footer>
+
+    <div class="footer-izq">
+  
+      <img src="../../../assets/img/logo-footer.png">
+      <div class="parrafo-footer" ><p>Con 2 años de experiencia fabricando ventanas de la mejor calidad.</p></div>
+      <div class="faq" ><img src="../../../assets/img/faq.png"><a routerLink="/preguntas-frecuentes">Preguntas Frecuentes</a></div>
+  
+    </div>
+    <div class="v-line"></div>
+  
+    <div class="footer-der">
+      <h4>Contáctanos</h4>
+      <ul>
+        <li><img src="../../../assets/img/whatsapp.png">+56 965789532</li>
+        <li><img src="../../../assets/img/correo.png"> <a class="btn-mail" routerLink="/contacto">Contáctanos</a></li>
+      </ul>
+    </div>
+    <div class="footer-centro"><p>Derechos Reservados Ventanas Técnicas 2023 ©</p></div>
+   </footer> 
+  </div><!-----CIERRE WRAP------>
+  </ion-content>
+  

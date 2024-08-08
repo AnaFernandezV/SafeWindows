@@ -1,0 +1,129 @@
+
+<ion-content> 
+	<div id="wrap">
+  <ion-header>
+    <header>
+      <div class="logo" routerLink="/home"> <img src="../../../assets/img/logo-con-letras.png"></div>
+      <div id="menu-adaptado" >
+        <ul>
+          <li class="burger" (click)="toggleMenu()"> 
+            <i class="material-icons">{{ isMenuOpen ? "close" : "menu" }}</i>
+          </li>
+        <li class="menu" [class.is-open]="isMenuOpen">        
+          <a routerLink="/home" class="menu-item">Inicio</a>
+          <a routerLink="/quienes-somos" class="menu-item">Quiénes somos</a>
+          <a routerLink="/nuestros-trabajos" class="menu-item">Nuestro trabajos</a>
+          <a routerLink="/catalogo" class="menu-item">Catálogo</a>       
+          <a *ngIf="logeado && logeado.id === 0" routerLink="/registro" class="menu-item">Registrate</a>
+          <a  *ngIf="logeado && logeado.id === 0" routerLink="/iniciar-sesion" class="menu-item" >Ingresar</a>
+          <a  *ngIf="logeado && logeado.tipo === 'admin'" routerLink="/admin" class="menu-item" >Admin</a>
+          <div routerLink="/detalle-cotizacion" id="cart" class="cart" data-totalitems="0">
+            <img src="../../../assets/img/cart-icon.png">
+          </div><!---cierre logo carrito-->
+        </li> <!----cierre menu-->
+      </ul> 
+      
+      </div><!--CIERRE MENU -->
+      <li *ngIf="logeado && logeado.id != 0" class="logoCerrarSesion"><img src="../../../assets/img/logout.png" (click)="logOut()"><p>Cerrar Sesión</p></li>   
+  
+      <div class="haztucotizacion" routerLink="/catalogo"><a>Haz tú cotización</a></div>
+     
+  
+  </header>
+  </ion-header>	
+  <div class="detalle-cotizacion">
+		
+    <h1>Detalle Cotización</h1>
+
+	<table >
+		<thead>
+			<tr>
+				<th>Ventana</th>
+                <th>Largo</th>
+                
+                <th>Ancho</th>
+            
+                <th>Instalación</th>
+
+                <th>Cantidad</th>
+
+                <th>Total</th>
+
+                <th>Opciones</th>
+			</tr>
+		</thead>
+		<tbody id="pdf-content">
+			<tr *ngFor="let array of carro; let i = index">
+                <td *ngFor="let elemento of array">
+                  {{ elemento.tipo | json }}
+                  
+                </td>
+                <td *ngFor="let elemento of array">
+                  {{ elemento.largo | json }}
+
+                </td>
+
+                <td *ngFor="let elemento of array">
+                  {{ elemento.ancho | json }}
+
+                </td>
+                <td *ngFor="let elemento of array">
+                  {{ elemento.instalacion | json }}
+
+                </td>
+                <td *ngFor="let elemento of array">
+                  {{ elemento.cantidad | json }}
+
+                </td>
+                <td *ngFor="let elemento of array">
+                 $ {{ elemento.total | json }} CLP
+
+                </td>
+                <td *ngFor="let elemento of array">
+
+                <button class="btn-borrar" (click)="DeleteDetalle(i)">BORRAR</button>
+
+                </td>
+              </tr>
+      <tr>
+				<td></td>
+				<td colspan="5" style="text-align: right">Total:</td>
+				<td>$ {{totalfinal}}</td>
+			</tr>
+    
+		</tbody>
+	</table>
+  
+  </div>
+	<div class="boton">
+	</div>
+  <div class="boton">
+		<button (click)="confirmarcotizacion()">Confirmar cotización</button>
+	</div>
+
+
+
+
+  <footer>
+
+    <div class="footer-izq">
+  
+      <img src="../../../assets/img/logo-footer.png">
+      <div class="parrafo-footer" ><p>Con 2 años de experiencia fabricando ventanas de la mejor calidad.</p></div>
+      <div class="faq" ><img src="../../../assets/img/faq.png"><a routerLink="/preguntas-frecuentes">Preguntas Frecuentes</a></div>
+  
+    </div>
+    <div class="v-line"></div>
+  
+    <div class="footer-der">
+      <h4>Contáctanos</h4>
+      <ul>
+        <li><img src="../../../assets/img/whatsapp.png">+56 965789532</li>
+        <li><img src="../../../assets/img/correo.png"> <a class="btn-mail" routerLink="/contacto">Contáctanos</a></li>
+      </ul>
+    </div>
+    <div class="footer-centro"><p>Derechos Reservados Ventanas Técnicas 2023 ©</p></div>
+	<script src="ruta/a/jspdf.plugin.autotable.min.js"></script>
+   </footer> 
+	 </div><!------CIERRE WRAP------>
+  </ion-content>

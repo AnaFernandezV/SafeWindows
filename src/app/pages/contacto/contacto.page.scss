@@ -1,0 +1,55 @@
+#contacto{
+  width: 100%;
+  height: auto;
+  padding: 0 0 2% 0;
+  margin: 0;
+}
+
+form{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 500px;
+  padding: 20px ;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px #ccc;
+  color: #000;
+ 
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+  background-color: #fff;
+}
+
+textarea {
+  height: 100px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #0b3c68;
+  color: #fff;
+  border: none;
+  margin: 2% auto;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  background-color: #005fa3;
+}

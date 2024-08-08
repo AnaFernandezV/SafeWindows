@@ -1,0 +1,233 @@
+.container{
+  width: 100%;
+  padding: 0 0 5% 0;
+  margin: 0 0px;
+  color: #000;
+  
+  input{
+    background-color: #FFF;
+    border-radius: 4px;
+    padding: 3px;
+    color: #000;
+  }
+
+}
+.container .topic{
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  
+}
+.content{
+  display: flex;
+}
+.content .list{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-right: 70px;
+  margin-left: 15px;
+  margin-bottom:15px;
+
+
+}
+.content .list label{
+  
+  width: 200px;
+  height: 60px;
+  font-size: 17px;
+  line-height: 50px; 
+  cursor: pointer;
+  padding-left: 25px;
+  transition: all 0.5s ease;
+  z-index: 12;
+}
+#modcatalogo:checked ~ .list label.modcatalogo,
+#modcotizacion:checked ~ .list label.modcotizacion,
+#modcredencial:checked ~ .list label.modcredencial,
+#modempresa:checked ~ .list label.modempresa,
+#modmobra:checked ~ .list label.modmobra,
+#modmaterial:checked ~ .list label.modmaterial,
+#modproveedor:checked ~ .list label.modproveedor,
+#modreporte:checked ~ .list label.modreporte,
+#modtransporte:checked ~ .list label.modtransporte{
+  color: #FFF;
+}
+
+.content .slider{
+  position: absolute;
+  top: 0;
+  height: 50px;
+  width: 100%;
+  border-radius: 5px;
+  background: #45a5a7;
+  transition: all 0.4s ease;  
+}
+
+input[type="radio"]{
+  display: none;
+}
+
+#modcatalogo:checked ~ .list .slider{
+  top: 0;
+  
+}
+#modcotizacion:checked ~ .list .slider{
+  top: 60px;
+}
+#modcredencial:checked ~ .list .slider{
+  top: 120px;
+}
+#modempresa:checked ~ .list .slider{
+  top: 180px;
+}
+#modmobra:checked ~ .list .slider{
+  top: 240px;
+}
+#modmaterial:checked ~ .list .slider{
+  top: 300px;
+}
+#modproveedor:checked ~ .list .slider{
+  top: 360px;
+}
+#modreporte:checked ~ .list .slider{
+  top: 420px;
+}
+#modtransporte:checked ~ .list .slider{
+  top: 480px;
+}
+.content .text-content{
+  width: 80%;
+  height: 100%;
+  margin: 0;
+  padding:0 3% 0 0;
+}
+.content .text{
+  display: none;
+}
+.content .text .title{
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.content .text-content .modcatalogo{
+  display: block;
+  
+}
+#modcatalogo:checked ~ .text-content .modcatalogo,
+#modcotizacion:checked ~ .text-content .modcotizacion,
+#modcredencial:checked ~ .text-content .modcredencial,
+#modempresa:checked ~ .text-content .modempresa,
+#modmobra:checked ~ .text-content .modmobra,
+#modmaterial:checked ~ .text-content .modmaterial,
+#modproveedor:checked ~ .text-content .modproveedor,
+#modreporte:checked ~ .text-content .modreporte,
+#modtransporte:checked ~ .text-content .modtransporte{
+  display: block;
+
+}
+#modcotizacion:checked ~ .text-content .modcatalogo,
+#modcredencial:checked ~ .text-content .modcatalogo,
+#modempresa:checked ~ .text-content .modcatalogo,
+#modmobra:checked ~ .text-content .modcatalogo,
+#modmaterial:checked ~ .text-content .modcatalogo,
+#modproveedor:checked ~ .text-content .modcatalogo,
+#modreporte:checked ~ .text-content .modcatalogo,
+#modtransporte:checked ~ .text-content .modcatalogo
+{
+  display: none;
+}
+
+/* Estilos para el botón que abre el formulario */
+#open-form-btn {
+	display: block;
+	margin: 20px auto;
+	padding: 10px;
+	background-color: #333;
+	color: #fff;
+	font-size: 18px;
+	border: none;
+	cursor: pointer;
+}
+
+/* Estilos para el formulario modal */
+.modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 9999;
+}
+.modal-content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #fff;
+	padding: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilos para los campos del formulario */
+form label {
+	display: block;
+	margin-bottom: 10px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+	display: block;
+	margin-bottom: 20px;
+	width: 100%;
+	padding: 10px;
+	font-size: 18px;
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 20px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
+.alinear-label{
+  width: 30%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  label{
+    margin:15px 0 15px 0;
+  }
+  input{
+    height: 40px;
+  }
+ button{
+  background-color: #44aa50;
+  margin: 2% 0 2% 2%;
+  border: none;
+  color: #FFF;
+  padding: 8px 16px ;
+  margin: 0 0 15px 0;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 5px;
+ }
+}

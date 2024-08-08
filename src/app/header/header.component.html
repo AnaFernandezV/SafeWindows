@@ -1,0 +1,48 @@
+
+<ion-header>
+
+
+
+
+  <div *ngIf="headerType === 1">
+  
+    <!-- Contenido del encabezado 1 -->
+   
+      <header>
+        <div class="logo" routerLink="/home"> <img src="../../../assets/img/logo-con-letras.png"></div>
+        <div id="menu-adaptado" >
+          <ul class="">
+            <li class="burger" (click)="toggleMenu()"> 
+              <i class="material-icons">{{ isMenuOpen ? "close" : "menu" }}</i>
+            </li>
+          <li class="menu" [class.is-open]="isMenuOpen">
+            <a routerLink="/home" class="menu-item">Inicio</a>
+            <a routerLink="/quienes-somos" class="menu-item">Quiénes somos</a>
+            <a routerLink="/nuestros-trabajos" class="menu-item">Nuestro trabajos</a>
+            <a routerLink="/catalogo" class="menu-item">Catálogo</a>
+            <a routerLink="/registro" class="menu-item">Registrate</a>
+            <a routerLink="/iniciar-sesion" class="menu-item" >Ingresar</a>
+            
+          </li>
+          </ul>     
+         
+        </div>
+        <div class="haztucotizacion" routerLink="/catalogo"><a>Haz tú cotización</a></div>
+       
+    </header>
+  
+  </div>
+
+
+   <!-- Actualmente no estan en uso pero de necesitarse, estan disponibles -->
+  <div *ngIf="headerType === 2">
+    <!-- Contenido del encabezado 2 -->
+    
+</div>
+
+  <div *ngIf="headerType === 3">
+    <!-- Contenido del encabezado predeterminado -->
+  
+  </div>
+
+</ion-header>

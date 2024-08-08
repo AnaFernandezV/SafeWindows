@@ -1,0 +1,87 @@
+<ion-content> 
+  <div id="wrap">
+    <ion-header>
+      <header>
+        <div class="logo" routerLink="/home"> <img src="../../../assets/img/logo-con-letras.png"></div>
+        <div id="menu-adaptado" >
+          <ul>
+            <li class="burger" (click)="toggleMenu()"> 
+              <i class="material-icons">{{ isMenuOpen ? "close" : "menu" }}</i>
+            </li>
+          <li class="menu" [class.is-open]="isMenuOpen">        
+            <a routerLink="/home" class="menu-item">Inicio</a>
+            <a routerLink="/quienes-somos" class="menu-item">Quiénes somos</a>
+            <a routerLink="/nuestros-trabajos" class="menu-item">Nuestro trabajos</a>
+            <a routerLink="/catalogo" class="menu-item">Catálogo</a>       
+            <a *ngIf="logeado && logeado.id === 0" routerLink="/registro" class="menu-item">Registrate</a>
+            <a  *ngIf="logeado && logeado.id === 0" routerLink="/iniciar-sesion" class="menu-item" >Ingresar</a>
+            <a  *ngIf="logeado && logeado.tipo === 'admin'" routerLink="/admin" class="menu-item" >Admin</a>
+            <div routerLink="/detalle-cotizacion" id="cart" class="cart" data-totalitems="0">
+              <img src="../../../assets/img/cart-icon.png">
+            </div><!---cierre logo carrito-->
+          </li> <!----cierre menu-->
+        </ul> 
+        
+        </div><!--CIERRE MENU -->
+        <li *ngIf="logeado && logeado.id != 0" class="logoCerrarSesion"><img src="../../../assets/img/logout.png" (click)="logOut()"><p>Cerrar Sesión</p></li>   
+    
+        <div class="haztucotizacion" routerLink="/catalogo"><a>Haz tú cotización</a></div>
+       
+    
+    </header>
+    </ion-header> 
+
+  <h1>Preguntas Frecuentes</h1> 
+
+  <section class="preguntas-frecuentes clearfix" >	
+		<div class="preguntas-frecuentes-contenedor serif">
+					                 
+            <ul class="preguntas">
+              <li>
+                <input class="pregunta-input" type="checkbox" name="pregunta-frecuente" id="pregunta-n1" />
+                <label for="pregunta-n1" class="pregunta">¿Qué necesito para realizar la cotización?</label>
+                <div class="respuesta"><p>Primero debes registrarte en la pagina, luego en catalogo seleccionar que ventanas quiere y finalmente ver tu cotizacion en el carrito</p></div>
+              </li>
+              <li>
+                <input class="pregunta-input" type="checkbox" name="pregunta-frecuente" id="pregunta-n2" />
+                <label for="pregunta-n2" class="pregunta">¿Se podrá descargar la información de la cotización?</label>
+                <div class="respuesta"><p>Claro, tendra un formato de descargar tipo PDF.</p></div>
+              </li>
+              <li>
+                <input class="pregunta-input" type="checkbox" name="pregunta-frecuente" id="pregunta-n3" />
+                <label for="pregunta-n3" class="pregunta">¿A qué público en específico va dirigido?</label>
+                <div class="respuesta"><p>De momento esta dirigido a empresas e inmobilarias</p></div>
+              </li>
+              <li>
+                <input class="pregunta-input" type="checkbox" name="pregunta-frecuente" id="pregunta-n4" />
+                <label for="pregunta-n4" class="pregunta">¿Que tipo de pago aceptamos?</label>
+                <div class="respuesta"><p>El tipo de pago de la empresa ventanas técnicas es vía Transferencia</p></div>
+              </li>
+            </ul>     
+         
+    </div>    
+</section>
+<footer>
+
+  <div class="footer-izq">
+
+    <img src="../../../assets/img/logo-footer.png">
+    <div class="parrafo-footer" ><p>Con 2 años de experiencia fabricando ventanas de la mejor calidad.</p></div>
+    <div class="faq" ><img src="../../../assets/img/faq.png"><a routerLink="/preguntas-frecuentes">Preguntas Frecuentes</a></div>
+
+  </div>
+  <div class="v-line"></div>
+
+  <div class="footer-der">
+    <h4>Contáctanos</h4>
+    <ul>
+      <li><img src="../../../assets/img/whatsapp.png">+56 965789532</li>
+      <li><img src="../../../assets/img/correo.png"> <a class="btn-mail" routerLink="/contacto">Contáctanos</a></li>
+    </ul>
+  </div>
+  <div class="footer-centro"><p>Derechos Reservados Ventanas Técnicas 2023 ©</p></div>
+ </footer> 
+ </div><!------CIERRE WRAP------>
+  
+  </ion-content>
+  

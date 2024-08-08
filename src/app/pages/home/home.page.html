@@ -1,0 +1,102 @@
+
+<ion-content>
+  <div id="wrap">
+<ion-header>
+  <header>
+    <div class="logo" routerLink="/home"> <img src="../../../assets/img/logo-con-letras.png"></div>
+    <div id="menu-adaptado" >
+      <ul>
+        <li class="burger" (click)="toggleMenu()"> 
+          <i class="material-icons">{{ isMenuOpen ? "close" : "menu" }}</i>
+        </li>
+      <li class="menu" [class.is-open]="isMenuOpen">        
+        <a routerLink="/home" class="menu-item">Inicio</a>
+        <a routerLink="/quienes-somos" class="menu-item">Quiénes somos</a>
+        <a routerLink="/nuestros-trabajos" class="menu-item">Nuestro trabajos</a>
+        <a routerLink="/catalogo" class="menu-item">Catálogo</a>       
+        <a *ngIf="logeado && logeado.id === 0" routerLink="/registro" class="menu-item">Registrate</a>
+        <a  *ngIf="logeado && logeado.id === 0" routerLink="/iniciar-sesion" class="menu-item" >Ingresar</a>
+        <a  *ngIf="logeado && logeado.tipo === 'admin'" routerLink="/admin" class="menu-item" >Admin</a>
+        <div routerLink="/detalle-cotizacion" id="cart" class="cart" data-totalitems="0">
+          <img src="../../../assets/img/cart-icon.png">
+        </div><!---cierre logo carrito-->
+      </li> <!----cierre menu-->
+    </ul> 
+    
+    </div><!--CIERRE MENU -->
+    <li *ngIf="logeado && logeado.id != 0" class="logoCerrarSesion"><img src="../../../assets/img/logout.png" (click)="logOut()"><p>Cerrar Sesión</p></li>   
+
+    <div class="haztucotizacion" routerLink="/catalogo"><a>Haz tú cotización</a></div>
+   
+
+</header>
+</ion-header> 
+  
+  
+    <div id="quienes-somos-index">
+
+      <h2>Quiénes Somos </h2>
+      <p>Ventanas Técnicas ha estado en el mercado durante dos años y se dedica a la fabricación 
+        de ventanas personalizadas para satisfacer las necesidades de cada cliente. Nuestra empresa 
+        utiliza materiales de alta calidad para garantizar la durabilidad de las ventanas y su 
+        eficiencia energética. Además, cuentan con un equipo de profesionales altamente capacitados 
+        para brindar un servicio personalizado y adaptado a las necesidades de cada cliente. 
+        Ventanas Técnicas se enorgullece de ofrecer un servicio excepcional y de superar las 
+        expectativas de los clientes.
+        <a href="">Ver Más ...</a></p>
+   
+  </div><!----Cierre quienes somos-->
+  
+  <div id="como-cotizar">
+    <section >
+        <h2>Cómo cotizar</h2>
+      <ul class="iconos-contenido">
+          <li>
+            <a href=""><img src="../../../assets/img/registrate.png"></a>
+  
+              <p>Regístrate e ingresa tus datos</p>
+          </li>
+          <li>
+            <a href=""><img src="../../../assets/img/rellena-datos.png"></a>
+  
+              <p>Rellena los datos en nuestra calculadora</p>
+          </li>
+          <li>
+            <a href=""><img src="../../../assets/img/click.png"></a>
+  
+              <p>Presiona botón enviar cotización </p>
+          </li>
+          <li>
+            <a href=""><img src="../../../assets/img/correoe.png"></a>
+  
+              <p>Espera la respuesta de Ventanas Técnicas</p>
+          </li>
+      </ul>
+  </section>
+  
+  </div><!----cierre como cotizar----------->
+
+
+  
+  <footer>
+
+    <div class="footer-izq">
+  
+      <img src="../../../assets/img/logo-footer.png">
+      <div class="parrafo-footer" ><p>Con 2 años de experiencia fabricando ventanas de la mejor calidad.</p></div>
+      <div class="faq" ><img src="../../../assets/img/faq.png"><a routerLink="/preguntas-frecuentes">Preguntas Frecuentes</a></div>
+  
+    </div>
+    <div class="v-line"></div>
+  
+    <div class="footer-der">
+      <h4>Contáctanos</h4>
+      <ul>
+        <li><img src="../../../assets/img/whatsapp.png">+56 965789532</li>
+        <li><img src="../../../assets/img/correo.png"> <a class="btn-mail" routerLink="/contacto">Contáctanos</a></li>
+      </ul>
+    </div>
+    <div class="footer-centro"><p>Derechos Reservados Ventanas Técnicas 2023 ©</p></div>
+   </footer> 
+  </div><!--------CIERRE WRAP------>
+</ion-content>

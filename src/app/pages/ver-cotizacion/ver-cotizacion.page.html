@@ -1,0 +1,94 @@
+<ion-content> 
+  <div id="wrap">
+  <ion-header>
+   
+      <div id="intranet">       
+         
+        <ul>
+          <li> <!-- BIenvenido : {{logeado.user.username}}   -->  </li>   
+         
+          <li >Cerrar Sesión</li>
+          <li><img src="../../../assets/img/logout.png"></li>
+        </ul>
+        <div class="logo-intranet"> <img src="../../../assets/img/logo-footer.png"></div>
+        
+      </div><!------cierre div intranet header-------->
+
+  </ion-header>
+
+  <div id="ver-cotizacion-contenido">
+    
+    <span><img src="../../../assets/img/volver.png" routerLink="/admin" alt="volver"></span>
+    <div class="ver-cotizacion">
+    
+      <h1>Detalle Orden : {{codigo}} </h1>
+      
+        <table class="tabla-contenido">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Ventanta</th>
+              <th>Largo </th>
+              <th>Ancho</th>
+              <th>Instalación</th>
+              <th>Cantidad</th>
+              <th>Total</th>
+            
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr *ngFor="let cotizacion of datacotizacion">
+              <td>{{ cotizacion.id}}</td>
+              <td>{{ cotizacion.ventanta}}</td>
+              <td>{{ cotizacion.largo}} </td>
+              <td>{{ cotizacion.ancho}}</td>
+              <td>{{ cotizacion.instalacion}}</td>
+              <td>{{ cotizacion.cantidad}}</td>
+              <td>{{ cotizacion.total}}</td>
+           </tr>        
+            <!-- Agregar más filas según sea necesario -->
+          </tbody>
+        </table>   
+        <br>
+        <div class="caja-formulario" >
+          <h2 style="color: black;"> Cambiar estado</h2>
+        <form  [formGroup]="cotizacion" (ngSubmit)="modificarcotizacion()">
+          <div class="form-group">
+          <select name="select" formControlName="estado" >
+            <option value="En Espera">En Espera</option>
+            <option value="Confirmado" selected>Confirmado</option>
+            <option value="En Preparacion">En Preparacion</option>
+            <option value="Cerrada">Cerrada</option>
+          </select>
+          <button type="submit" class="botoncito btn-agregar-modulo" style="margin:auto">Cambiar</button>
+        </div>
+        </form>
+      </div>
+    </div>
+
+
+  </div><!--------CIERRE CONTENIDO-------->
+   <footer>
+
+    <div class="footer-izq">
+  
+      <img src="../../../assets/img/logo-footer.png">
+      <div class="parrafo-footer" ><p>Con 2 años de experiencia fabricando ventanas de la mejor calidad.</p></div>
+      <div class="faq" ><img src="../../../assets/img/faq.png"><a routerLink="/preguntas-frecuentes">Preguntas Frecuentes</a></div>
+  
+    </div>
+    <div class="v-line"></div>
+  
+    <div class="footer-der">
+      <h4>Contáctanos</h4>
+      <ul>
+        <li><img src="../../../assets/img/whatsapp.png">+56 965789532</li>
+        <li><img src="../../../assets/img/correo.png"> <a class="btn-mail" routerLink="/contacto">Contáctanos</a></li>
+      </ul>
+    </div>
+    <div class="footer-centro"><p>Derechos Reservados Ventanas Técnicas 2023 ©</p></div>
+   </footer> 
+  </div><!-----CIERRE WRAP------>
+  </ion-content>
+  

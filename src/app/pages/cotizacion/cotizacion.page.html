@@ -1,0 +1,107 @@
+<ion-content> 
+  <div id="wrap">
+    <ion-header>
+      <header>
+        <div class="logo" routerLink="/home"> <img src="../../../assets/img/logo-con-letras.png"></div>
+        <div id="menu-adaptado" >
+          <ul>
+            <li class="burger" (click)="toggleMenu()"> 
+              <i class="material-icons">{{ isMenuOpen ? "close" : "menu" }}</i>
+            </li>
+          <li class="menu" [class.is-open]="isMenuOpen">        
+            <a routerLink="/home" class="menu-item">Inicio</a>
+            <a routerLink="/quienes-somos" class="menu-item">Quiénes somos</a>
+            <a routerLink="/nuestros-trabajos" class="menu-item">Nuestro trabajos</a>
+            <a routerLink="/catalogo" class="menu-item">Catálogo</a>       
+            <a *ngIf="logeado && logeado.id === 0" routerLink="/registro" class="menu-item">Registrate</a>
+            <a  *ngIf="logeado && logeado.id === 0" routerLink="/iniciar-sesion" class="menu-item" >Ingresar</a>
+            <a  *ngIf="logeado && logeado.tipo === 'admin'" routerLink="/admin" class="menu-item" >Admin</a>
+            <div routerLink="/detalle-cotizacion" id="cart" class="cart" data-totalitems="0">
+              <img src="../../../assets/img/cart-icon.png">
+            </div><!---cierre logo carrito-->
+          </li> <!----cierre menu-->
+        </ul> 
+        
+        </div><!--CIERRE MENU -->
+        <li *ngIf="logeado && logeado.id != 0" class="logoCerrarSesion"><img src="../../../assets/img/logout.png" (click)="logOut()"><p>Cerrar Sesión</p></li>   
+    
+        <div class="haztucotizacion" routerLink="/catalogo"><a>Haz tú cotización</a></div>      
+    
+    </header>
+    </ion-header> 
+
+<div class="detalle-producto">
+    <h1>Genera tú cotización</h1>       
+      <section>
+         <ul id="detalle-producto">             
+             
+                <li>
+                  
+                  <img [src]="getImagenUrl(nombrefoto)">
+                </li>
+                <li>
+                  <h3>Ventana {{nombrecatalogo}}</h3>
+                 
+                  <label>Tamaño de ventana:</label>
+                    <input type="number" [(ngModel)]="largo" min="100" placeholder="Largo en cm" id="largo">
+                    <input type="number" [(ngModel)]="ancho" min="100" placeholder="Ancho en cm" id="ancho">                    
+                
+                    <label>Tipo de material:</label>
+                    <select [(ngModel)]="selectedOption" id="material" >
+                      <option *ngFor="let estruc of estructural" [ngValue]="{ nombre: estruc.nom_material, valor: estruc.precio }">{{ estruc.nom_material }}</option>                     
+                    </select>
+                
+                    <label>Tipo de vidrio:</label>
+                    <select [(ngModel)]="selectedVidrio" id="vidrio" >
+                      
+                      <option *ngFor="let vidr of vidrio" [ngValue]="{ nombre: vidr.nom_material, valor: vidr.precio }">{{ vidr.nom_material }}</option>              
+                    </select>
+                    
+                    <label>¿Requiere Instalación?</label>
+                      <select [(ngModel)]="selectedInstalacion" id="instalacions">
+                        <option *ngFor="let option of instalation" [value]="option.valor">{{ option.texto }}</option>                 
+                      </select>
+
+                
+                    <label>Cantidad de ventanas:</label>
+                    <input [(ngModel)]="cantidad" type="number" id="cantidad" min="1" value="1">
+                    <p> Precio: ${{precioFinal}}</p>             
+                
+                    <div class="page-wrapper">
+                    <button id="addtocart" (click)="agregarCarrito()" class="color-boton-azul">Agregar al pedido
+                      <span class="cart-item"></span>
+                    </button> </div>
+                  
+                    <button (click)="calcular()" id="end" class="color-boton-azul">Calcular</button>
+           
+                    <button type="submit" routerLink="/catalogo" class="color-boton-verde">Ver más Ventanas</button>
+                    <button type="submit" routerLink="/detalle-cotizacion" class="color-boton-verde">Detalle cotización</button>
+                </li>  
+                              
+            </ul>
+        </section>
+    
+</div><!---cierre detalle producto-->
+<footer>
+
+  <div class="footer-izq">
+
+    <img src="../../../assets/img/logo-footer.png">
+    <div class="parrafo-footer" ><p>Con 2 años de experiencia fabricando ventanas de la mejor calidad.</p></div>
+    <div class="faq" ><img src="../../../assets/img/faq.png"><a routerLink="/preguntas-frecuentes">Preguntas Frecuentes</a></div>
+
+  </div>
+  <div class="v-line"></div>
+
+  <div class="footer-der">
+    <h4>Contáctanos</h4>
+    <ul>
+      <li><img src="../../../assets/img/whatsapp.png">+56 965789532</li>
+      <li><img src="../../../assets/img/correo.png"> <a class="btn-mail" routerLink="/contacto">Contáctanos</a></li>
+    </ul>
+  </div>
+  <div class="footer-centro"><p>Derechos Reservados Ventanas Técnicas 2023 ©</p></div>
+ </footer> 
+ </div><!-----CIERRE WRAP----->
+  </ion-content>
+  

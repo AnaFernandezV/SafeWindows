@@ -1,0 +1,64 @@
+
+
+
+
+// custom
+.flip {
+    position: relative;
+    display: inline-block;
+    margin: 0 2% 0 2%;
+    width: 280px;
+
+    >.front,
+    >.back {
+      display: block;
+      color: black;
+      width: 250px;     
+      height: 250px;
+      padding: 5px;
+      background: white; 
+
+      
+      img{
+        width: 100%;
+        height: 250px;
+        padding:25px;
+        margin: 0 5%;
+
+      }
+      p {
+        font-size: 15px;
+        line-height: 160%;
+        color: #090909;
+        
+      }
+    }
+}
+
+#nuestros-trabajos{
+width: 100%;
+height: auto;
+margin: 0.1 0 0 0;
+padding: 0 0 5% 0;
+text-align: center;
+background-color: #FFF;
+}
+
+.imagen-linda {
+    display: block;
+    width: 300px; /* ajusta el tamaño de acuerdo a tus necesidades */
+    height: auto;
+    margin: 0 auto; /* centra la imagen horizontalmente */   
+    transition: transform 0.3s ease-in-out; /* agrega una transición al hacer hover */
+    img{
+
+      border-radius: 25px; /* agrega bordes redondeados */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* añade una sombra suave */
+    }
+
+  }
+
+  .imagen-linda:hover {
+    transform: scale(1.1); /* hace que la imagen se agrande ligeramente al hacer hover */
+  }
+

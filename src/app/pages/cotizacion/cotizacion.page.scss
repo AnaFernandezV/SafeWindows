@@ -1,0 +1,128 @@
+#detalle-producto{
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+
+ section { 
+  width: 100%;
+  padding: 0;
+
+}
+li{
+  list-style: none;
+  flex-basis: auto;
+  margin: 15px 15px 15px 15px;
+  padding: 20px ;
+  color: #000;
+
+}
+img{
+  max-width:400px;
+  height: auto;
+  margin: 0;
+  align-items: flex-start;
+}
+hr{
+  width: 100%;
+}
+ p{
+  color: rgb(6, 6, 6);
+  font-size:20px ;
+  margin: 10px 0;
+  padding: 0;
+}
+
+h5{
+  font-weight: bold;
+  font-size: 25px;
+}
+input{
+  font-size: 20px;  
+}
+.detalle-btn{
+  margin: 25px 0 0 40px;
+}
+.id-produc{
+  color: #75787b;
+  font-size: 11px;
+
+}
+.contenedor-img{
+  max-width: 250px;
+  max-height: 250px;
+  margin: 0;
+  padding: 0;
+}
+/********formulario detalle ventana***********/
+}
+form {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 20px;
+	border-radius: 5px;
+  color: #000;
+
+}
+
+label {
+	display: block;
+	margin: 10px 0 5px 0px;
+  
+}
+
+input[type="number"]{  
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 10px 0px 5px 0;
+  font-size: 16px;
+  background-color: #fff;
+  
+}
+
+select {
+	padding: 5px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	width: 100%;
+	box-sizing: border-box;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	font-size: 16px;
+  background-color: #fff;
+}
+
+input[type="checkbox"]  {
+	margin-top: 10px;
+  display:flex;
+  background-color: #fff;
+}
+
+
+button {
+	padding: 10px 20px;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+  padding: 15px;
+  margin: 10px 30px 0px 0px;
+	cursor: pointer;
+}
+.checkbox-container {
+	display: flex;
+	align-items: center;
+
+  label{    
+  margin-left: 10px;
+
+  }
+
+}

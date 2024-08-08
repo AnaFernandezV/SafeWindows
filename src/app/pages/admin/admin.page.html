@@ -1,0 +1,777 @@
+<ion-content>
+
+  <div id="wrap">
+    <ion-header>
+      <div id="intranet">
+
+        <ul>
+          <li> <!-- BIenvenido : {{logeado.user.username}}   --> </li>
+
+          <li>Cerrar Sesión</li>
+          <li><img src="../../../assets/img/logout.png" (click)="logOut()"></li>
+        </ul>
+        <div class="logo-intranet"> <img routerLink="/home" src="../../../assets/img/logo-footer.png"></div>
+
+      </div><!------cierre div intranet header-------->
+    </ion-header>
+
+
+    <h1>Administrador Módulos</h1>
+     <div class="container">
+      <div class="content">
+        <input type="radio" name="slider" checked id="modempresa">
+        <input type="radio" name="slider" id="modcatalogo">
+        <input type="radio" name="slider" id="modcotizacion">
+        <input type="radio" name="slider" id="modcredencial">
+
+        <input type="radio" name="slider" id="modmobra">
+        <input type="radio" name="slider" id="modmaterial">
+        <input type="radio" name="slider" id="modproveedor">
+        <input type="radio" name="slider" id="modreporte">
+        <input type="radio" name="slider" id="modtransporte">
+        <div class="list">
+          <label for="modcatalogo" class="modcatalogo">
+            <i class="fas fa-modcatalogo"></i>
+            <span (click)="botoncatalogo()" class="title">Módulo Catálogo</span>
+          </label>
+          <label for="modcotizacion" class="modcotizacion">
+            <span class="icon"><i class="fas fa-modcotizacion"></i></span>
+            <span class="title"(click)="botoncotizacion()">Módulo Cotización</span>
+          </label>
+          <label for="modcredencial" class="modcredencial">
+            <span class="icon"><i class="far fa-envelope"></i></span>
+            <span class="title" (click)="botonCredencial()">Módulo Credencial</span>
+          </label>
+          <label for="modempresa" class="modempresa">
+            <span class="icon"><i class="fas fa-modempresa"></i></span>
+            <span (click)="botonEmpresas()" class="title">Módulo Empresa</span>
+          </label>
+          <label for="modmobra" class="modmobra">
+            <span class="icon"><i class="far fa-modmobra"></i></span>
+            <span class="title" (click)="botonmano()">Módulo Mano obra</span>
+          </label>
+
+          <label for="modmaterial" class="modmaterial">
+            <span class="icon"><i class="far fa-modmaterial"></i></span>
+            <span class="title" (click)="botonMateriales()">Módulo Material</span>
+          </label>
+
+          <label for="modproveedor" class="modproveedor">
+            <span class="icon"><i class="far fa-modproveedor"></i></span>
+            <span class="title" (click)="botonproveedor()">Módulo Proveedor</span>
+          </label>
+
+          <label for="modreporte" class="modreporte">
+            <span class="icon"><i class="far fa-modreporte"></i></span>
+            <span class="title">Módulo Reporte</span>
+          </label>
+
+          <label for="modtransporte" class="modtransporte">
+            <span class="icon"><i class="far fa-modtransporte"></i></span>
+            <span class="title" (click)="botontransporte()">Módulo Transporte</span>
+          </label>
+
+          <div class="slider"></div>
+        </div><!---cierre list-->
+
+        <div class="text-content">
+          
+          <div class="modcatalogo text">
+            <div class="title">Catálogo</div>
+            <button class="btn-agre" routerLink="/agregar-catalogo">AGREGAR NUEVO</button>
+
+            <div class="buscador">
+              <input type="text" id="input-buscar" placeholder="Buscar Catálogo..." [(ngModel)]="valorBuscado">
+              <button id="btn-buscar" (click)="buscarElemento(valorBuscado,1)">BUSCAR</button>
+            </div><!---cierre buscador-->
+            <div *ngIf="verbuscado===false">
+            <table class="tabla-contenido">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Descripción</th>
+                  <th>Precio Extra</th>
+                  <th>Imagen</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let catalogo of catalogos">
+                  <td>{{catalogo.id}}</td>
+                  <td>{{catalogo.nom_cata}}</td>
+                  <td>{{catalogo.descripcion}}</td>
+                  <td>{{catalogo.extra}}</td>
+                  <td> <img [src]="getImagenUrl(catalogo.imagen)"></td>
+                  <td>
+                    <button [routerLink]="'/modificar-catalogo/' + catalogo.id" class="btn-editar">MODIFICAR</button>
+                    <button (click)="DeleteCatalogo(catalogo.id)" class="btn-borrar">BORRAR</button>
+                  </td>
+                </tr>
+                <!-- Agregar más filas según sea necesario -->
+              </tbody>
+            </table>
+          </div><!---cierre ng if false---->
+          <div *ngIf="verbuscado===true">
+            <table class="tabla-contenido">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Descripción</th>
+                  <th>Precio Extra</th>
+                  <th>Imagen</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let resultado of resultados">
+                  <td>{{resultado.id}}</td>
+                  <td>{{resultado.nom_cata}}</td>
+                  <td>{{resultado.descripcion}}</td>
+                  <td>{{resultado.extra}}</td>
+                  <td> <img [src]="getImagenUrl(resultado.imagen)"></td>
+                  <td>
+                    <button [routerLink]="'/modificar-catalogo/' + resultado.id" class="btn-editar">MODIFICAR</button>
+                    <button (click)="DeleteCatalogo(resultado.id)" class="btn-borrar">BORRAR</button>
+                  </td>
+                </tr>
+                <!-- Agregar más filas según sea necesario -->
+              </tbody>
+            </table>
+          </div><!---cierre ng if true---->
+          </div><!-----cierre modcatalogo text--->
+
+          <div class="modcotizacion text">
+            <div class="title">Cotización</div>
+
+            <div class="buscador">
+              <input type="text" id="input-buscar" placeholder="Buscar Empresa..." [(ngModel)]="valorBuscado">
+              <button id="btn-buscar" (click)="buscarElemento(valorBuscado,2)">BUSCAR</button>
+            </div><!---cierre buscador-->
+            
+            <div *ngIf="verbuscado===false">
+            <table class="tabla-contenido">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Empresa</th>
+                  <th>Código de Cotización</th>
+                  <th>Total</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                  <th>PDF</th>
+
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr *ngFor="let cotizacion of cotizaciones">
+                  <td>{{ cotizacion.id}}</td>
+
+                  <td>
+                  <div *ngFor="let empresa of empresas">
+                    
+                 <div *ngIf="empresa.id == cotizacion.emp_coti">{{ empresa.nom_empresa}}</div>
+                  </div>
+                </td>
+                  <td>{{ cotizacion.codigo}}</td>
+                  <td> $ {{ cotizacion.total}}</td>
+                  <td> {{ cotizacion.estado}}</td>
+
+                  <td>
+                    <a [routerLink]="'/ver-cotizacion/' + cotizacion.codigo" class="btn-editar">VER DETALLE</a>
+
+                  </td>
+                  <td class="pdf"><img  (click)="downloadPDF2('cotizacion-'+ cotizacion.codigo)" src="../../../assets/img/pdf.png"
+                      alt=""></td>
+
+                </tr>
+
+
+
+                <!-- Agregar más filas según sea necesario -->
+              </tbody>
+            </table>
+          </div><!----cierre ng if false----->
+
+          <div *ngIf="verbuscado===true">
+            <table class="tabla-contenido">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Empresa</th>
+                  <th>Codigo de Cotizacion</th>
+                  <th>Acciones</th>
+                  <th>PDF</th>
+
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr *ngFor="let resultado of resultados">
+                  <td>{{ resultado.id}}</td>
+                  <td>{{ resultado.emp_coti}}</td>
+                  <td>{{ resultado.codigo}}</td>
+
+
+                  <td>
+                   
+                    <a [routerLink]="'/ver-cotizacion/' + resultado.codigo" class="btn-editar">VER DETALLE</a>
+  
+                  </td>
+                  <td><img (click)="downloadPDF2('cotizacion-'+ resultado.codigo)" src="../../../assets/img/pdf.png"
+                      alt=""></td>
+
+                </tr>
+                <!-- Agregar más filas según sea necesario -->
+              </tbody>
+            </table>
+          </div><!----cierre ng if true----->
+          
+          </div><!--- cierre modcotizacion text----->
+          <div class="modcredencial text">
+            <div class="title">Credencial</div>
+
+            <div class="buscador">
+              <input type="text" id="input-buscar" placeholder="Buscar Credencial..." [(ngModel)]="valorBuscado">
+              <button id="btn-buscar" (click)="buscarElemento(valorBuscado,3)">BUSCAR</button>
+            </div><!---cierre buscador---->
+
+            <div *ngIf="verbuscado===false">
+            <table class="tabla-contenido">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Usuario</th>
+                  <th>Tipo</th>
+                  <th>Opciones</th>
+                </tr>
+              </thead>
+              <tr *ngFor="let credencial of credenciales">
+                <td>{{credencial.id}}</td>
+                <td>{{credencial.username}}</td>
+                <td>{{credencial.tipo}}</td>
+
+                <td>
+                  <a [routerLink]="'/modificar-credencial/'+credencial.id" class="btn-editar">MODIFICAR</a>
+                  <button (click)="DeleteCredencial(credencial.id)" class="btn-borrar">BORRAR</button>
+                </td>
+              </tr>
+
+            </table>
+
+            </div><!--cierre ng if false--->
+            <div *ngIf="verbuscado===true">
+              <table class="tabla-contenido">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Usuario</th>
+                    <th>Tipo</th>
+                    <th>Opciones</th>
+                  </tr>
+                </thead>
+                <tr *ngFor="let resultado of resultados">
+                  <td>{{resultado.id}}</td>
+                  <td>{{resultado.username}}</td>
+                  <td>{{resultado.tipo}}</td>
+  
+                  <td>
+                    <a [routerLink]="'/modificar-credencial/'+resultado.id" class="btn-editar">MODIFICAR</a>
+                    <button (click)="DeleteCredencial(resultado.id)" class="btn-borrar">BORRAR</button>
+                  </td>
+                </tr>
+  
+              </table>
+  
+              </div><!--cierre ng if true--->
+          </div><!---cierre modcredencial text-->
+
+          <div class="modempresa text">
+            <div class="title">Empresa</div>
+
+            <div class="buscador">
+              <input type="text" id="input-buscar" placeholder="Buscar Empresa..." [(ngModel)]="valorBuscado">
+              <button id="btn-buscar" (click)="buscarElemento(valorBuscado,4)">BUSCAR</button>
+            </div><!--cierre buscador---->
+
+            <div *ngIf="verbuscado===false">
+            <table class="tabla-contenido">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre Empresa</th>
+                  <th>Rut</th>
+                  <th>Correo</th>
+                  <th>Teléfono</th>
+                  <th>Dirección</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tr *ngFor="let empresa of empresas">
+                <td>{{ empresa.id}}</td>
+                <td>{{ empresa.nom_empresa}}</td>
+                <td>{{ empresa.rut}}</td>
+                <td>{{ empresa.correo}}</td>
+                <td>{{ empresa.telefono}}</td>
+                <td>{{ empresa.direccion}}</td>
+                <td>
+                  <!-- <button class="btn-editar">MODIFICAR</button> -->
+                  <a [routerLink]="'/modificar-empresa/' + empresa.id" class="btn-editar">MODIFICAR</a>
+                  <button class="btn-borrar" (click)="DeleteEmp(empresa.id)">BORRAR</button>
+                </td>
+
+              </tr>
+      
+            </table>
+
+          </div><!---cierre ng if false-->
+          <div *ngIf="verbuscado===true">
+            <table class="tabla-contenido">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre Empresa</th>
+                  <th>Rut</th>
+                  <th>Correo</th>
+                  <th>Teléfono</th>
+                  <th>Dirección</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tr *ngFor="let resultado of resultados">
+                <td>{{ resultado.id}}</td>
+                <td>{{ resultado.nom_empresa}}</td>
+                <td>{{ resultado.rut}}</td>
+                <td>{{ resultado.correo}}</td>
+                <td>{{ resultado.telefono}}</td>
+                <td>{{ resultado.direccion}}</td>
+                <td>
+                  <!-- <button class="btn-editar">MODIFICAR</button> -->
+                  <a [routerLink]="'/modificar-empresa/' + resultado.id" class="btn-editar">MODIFICAR</a>
+                  <button class="btn-borrar" (click)="DeleteEmp(resultado.id)">BORRAR</button>
+                </td>
+
+              </tr>
+      
+            </table>
+
+          </div><!---cierre ng if true-->
+
+          </div> <!--  Cierre de ModEmpresa text-->
+
+          <div class="modmobra text">
+            <div class="title">Mano de Obra</div>
+            <button class="btn-agre" routerLink="/agregar-mano-obra">AGREGAR NUEVO</button>
+            <div class="buscador">
+              <input type="text" id="input-buscar" placeholder="Buscar Personal..." [(ngModel)]="valorBuscado">
+              <button id="btn-buscar" (click)="buscarElemento(valorBuscado,5)">BUSCAR</button>
+            </div><!--cierre buscador---->
+
+            
+          <div *ngIf="verbuscado===false">
+            <table class="tabla-contenido">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Primer Apellido</th>
+                  <th>Rut</th>
+                  <th>Correo</th>
+                  <th>Teléfono</th>
+                  <th>Especialidad</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tr *ngFor="let manodeobra of manodeobras">
+                <td>{{manodeobra.id}}</td>
+                <td>{{manodeobra.nom_mano}}</td>
+                <td>{{manodeobra.ape_mano}}</td>
+                <td>{{manodeobra.rut}}</td>
+                <td>{{manodeobra.correo}}</td>
+                <td>{{manodeobra.telefono}}</td>
+                <td>{{manodeobra.especialidad}}</td>
+                <td>
+                  <button class="btn-editar" [routerLink]="'/modificar-mano-obra/' + manodeobra.id">MODIFICAR</button>
+                  <button class="btn-borrar" (click)="DeleteMano(manodeobra.id)">BORRAR</button>
+                </td>
+              </tr>
+
+            </table>
+          </div><!---cierre ng if false---->
+          
+          <div *ngIf="verbuscado===true">
+            <table class="tabla-contenido">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Primer Apellido</th>
+                  <th>Rut</th>
+                  <th>Correo</th>
+                  <th>Teléfono</th>
+                  <th>Especialidad</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tr *ngFor="let resultado of resultados">
+                <td>{{resultado.id}}</td>
+                <td>{{resultado.nom_mano}}</td>
+                <td>{{resultado.ape_mano}}</td>
+                <td>{{resultado.rut}}</td>
+                <td>{{resultado.correo}}</td>
+                <td>{{resultado.telefono}}</td>
+                <td>{{resultado.especialidad}}</td>
+                <td>
+                  <button class="btn-editar" [routerLink]="'/modificar-mano-obra/' + resultado.id">MODIFICAR</button>
+                  <button class="btn-borrar" (click)="DeleteMano(resultado.id)">BORRAR</button>
+                </td>
+              </tr>
+
+            </table>
+          </div><!---cierre ng if true---->
+          </div> <!--  Cierre de ModObra text-->
+          
+          <div class="modmaterial text">
+            <div class="title">Material</div>
+            <button class="btn-agre" routerLink="/agregar-material">AGREGAR NUEVO</button>
+            <div class="buscador">
+              <input type="text" id="input-buscar" placeholder="Buscar Material..." [(ngModel)]="valorBuscado"
+              >
+              <button id="btn-buscar" (click)="buscarElemento(valorBuscado,6)"
+              >BUSCAR</button>
+            </div><!--cierre buscador---->
+            <div *ngIf="verbuscado===false">
+            <table class="tabla-contenido">
+            
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Descripción</th>
+                  <th>Tipo</th>
+                  <th>Precio M2</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let material of materiales">
+                  <td>{{ material.id}}</td>
+                  <td>{{ material.nom_material}}</td>
+                  <td>{{ material.descripcion}}</td>
+                  <td>{{ material.tipo}}</td>
+                  <td>{{ material.precio}}</td>
+
+                  <td>
+                    <!-- <button class="btn-editar">MODIFICAR</button> -->
+                    <a class="btn-editar" [routerLink]="'/modificar-material/' + material.id">MODIFICAR</a>
+
+                    <button class="btn-borrar" (click)="DeleteMat(material.id)">BORRAR</button>
+                  </td>
+
+                </tr>
+
+              </tbody>
+            </table>
+          </div><!----cierre ng if false---->
+
+          <div *ngIf="verbuscado===true">
+            <table class="tabla-contenido">
+            
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Descripción</th>
+                  <th>Tipo</th>
+                  <th>Precio M2</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let resultado of resultados">
+                  <td>{{ resultado.id}}</td>
+                  <td>{{ resultado.nom_material}}</td>
+                  <td>{{ resultado.descripcion}}</td>
+                  <td>{{ resultado.tipo}}</td>
+                  <td>{{ resultado.precio}}</td>
+
+                  <td>
+                    <!-- <button class="btn-editar">MODIFICAR</button> -->
+                    <a class="btn-editar" [routerLink]="'/modificar-material/' + resultado.id">MODIFICAR</a>
+
+                    <button class="btn-borrar" (click)="DeleteMat(resultado.id)">BORRAR</button>
+                  </td>
+
+                </tr>
+
+              </tbody>
+            </table>
+          </div><!----cierre ng if true---->
+          </div> <!--  Cierre de modMaterial text-->
+          
+          <div class="modproveedor text">
+            <div class="title">Proveedor</div>
+            <button class="btn-agre" routerLink="/agregar-proveedor">AGREGAR NUEVO</button>
+            <div class="buscador">
+              <input type="text" id="input-buscar" placeholder="Buscar Proveedor..." [(ngModel)]="valorBuscado">
+              <button id="btn-buscar" (click)="buscarElemento(valorBuscado,7)">BUSCAR</button>
+            </div><!--cierre buscador---->
+
+            
+          <div *ngIf="verbuscado===false">
+            <table class="tabla-contenido">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre Empresa</th>
+                  <th>Correo</th>
+                  <th>Teléfono</th>
+                  <th>Dirección</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let proveedor of proveedores">
+                  <td>{{proveedor.id}}</td>
+                  <td>{{proveedor.nom_pro}}</td>
+                  <td>{{proveedor.correo}}</td>
+                  <td>{{proveedor.telefono}}</td>
+                  <td>{{proveedor.direccion}}</td>
+                  <td>
+                    <button class="btn-editar" [routerLink]="'/modificar-proveedor/' + proveedor.id">MODIFICAR</button>
+                    <button class="btn-borrar" (click)="DeleteProve(proveedor.id)">BORRAR</button>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div><!--cierre ng if false-->
+
+          <div *ngIf="verbuscado===true">
+            <table class="tabla-contenido">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre Empresa</th>
+                  <th>Correo</th>
+                  <th>Teléfono</th>
+                  <th>Dirección</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let resultado of resultados">
+                  <td>{{resultado.id}}</td>
+                  <td>{{resultado.nom_pro}}</td>
+                  <td>{{resultado.correo}}</td>
+                  <td>{{resultado.telefono}}</td>
+                  <td>{{resultado.direccion}}</td>
+                  <td>
+                    <button class="btn-editar" [routerLink]="'/modificar-proveedor/' + resultado.id">MODIFICAR</button>
+                    <button class="btn-borrar" (click)="DeleteProve(resultado.id)">BORRAR</button>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div><!--cierre ng if true-->
+          </div> <!--  Cierre de modProvedor text-->
+
+
+          <div class="modreporte text">
+            <div class="title">Reporte</div>
+            
+            <div class="buscador">
+              <input type="text" id="input-buscar" placeholder="Buscar Reporte...">
+              <button id="btn-buscar" >BUSCAR</button>
+            </div><!--cierre buscador---->
+
+
+            
+              <div class="alinear-label">
+                <label for="startDate">Fecha de inicio:</label>
+                <input type="date" id="startDate" [(ngModel)]="fechaInicio">
+            
+          
+                <label  for="endDate">Fecha final:</label>
+                <input type="date" id="endDate" [(ngModel)]="FechaFin">
+                <button (click)="submit()">ENVIAR</button>
+                
+              </div>
+              
+              <div class="buscador">
+             
+              <button id="btn-buscar" *ngIf="botonDescargaReporte===true" (click)="guardarPDF()">Descargar</button>
+            
+              </div>
+
+
+              <table class="tabla-contenido">
+                <thead >
+                  <tr>
+                    <th>ID</th>
+                    <th>Empresa</th>
+                    <th>Código de Cotización</th>
+                    <th>Detalle de Cotización</th>
+                    <th>Estado</th>
+                    <th>Total</th>                   
+  
+                  </tr>
+                </thead>
+                <tbody id="pdf-content">
+  
+                  <tr *ngFor="let reporte of reportes">
+                    <td>{{ reporte.id}}</td>
+                    <td>
+                      <div *ngFor="let empresa of empresas">
+                        
+                     <div *ngIf="empresa.id == reporte.emp_coti">{{ empresa.nom_empresa}}</div>
+                      </div>
+                    </td>
+                    <td>{{ reporte.codigo}}</td>
+
+                    <td>
+                    <div *ngFor="let cotizacion of detallereportes">
+                      <div *ngIf="reporte.codigo==cotizacion.codigo">
+                    
+                      {{ cotizacion.ventanta}}<br>                  
+                      Cant :{{ cotizacion.cantidad}}
+                      Precio:  ${{ cotizacion.total}}<br>
+                    
+                      </div>
+                    </div> 
+                  </td>
+                  <td>{{ reporte.estado}}</td>
+                  <td>${{ reporte.total}}</td>
+  
+                  </tr>
+                         
+  
+  
+  
+                  <!-- Agregar más filas según sea necesario -->
+                </tbody>
+              </table>
+            
+          </div><!--  Cierre de ModReporte text-->
+
+
+
+          <div class="modtransporte text">
+            <div class="title">Transporte</div>
+            <button class="btn-agre" routerLink="/agregar-transporte">AGREGAR NUEVO</button>
+            <div class="buscador">
+              <input type="text" id="input-buscar" placeholder="Buscar Transporte..." [(ngModel)]="valorBuscado">
+              <button id="btn-buscar" (click)="buscarElemento(valorBuscado,8)">BUSCAR</button>
+            </div><!---cierre buscando---->
+
+            <div *ngIf="verbuscado===false">
+            <table class="tabla-contenido">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Empresa</th>
+                  <th>Teléfono</th>
+                  <th>Correo</th>
+                  <th>Sector</th>
+                  <th>Cargo Servicio</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let transporte of transportes">
+                  <td>{{ transporte.id}}</td>
+                  <td>{{ transporte.emp_tra}}</td>
+                  <td>{{ transporte.telefono}}</td>
+                  <td>{{ transporte.correo}}</td>
+                  <td>{{ transporte.sector}}</td>
+                  <td>{{ transporte.cargo_ser}}</td>
+                  <td>
+                    <button class="btn-editar"
+                      [routerLink]="'/modificar-transporte/' + transporte.id">MODIFICAR</button>
+                    <button class="btn-borrar" (click)="DeleteTrans(transporte.id)">BORRAR</button>
+                  </td>
+                </tr>
+
+
+              </tbody>
+            </table>
+          </div><!----cierre ng if false-->
+
+          <div *ngIf="verbuscado===true">
+            <table class="tabla-contenido">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Empresa</th>
+                  <th>Teléfono</th>
+                  <th>Correo</th>
+                  <th>Sector</th>
+                  <th>Cargo Servicio</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let resultado of resultados">
+                  <td>{{ resultado.id}}</td>
+                  <td>{{ resultado.emp_tra}}</td>
+                  <td>{{ resultado.telefono}}</td>
+                  <td>{{ resultado.correo}}</td>
+                  <td>{{ resultado.sector}}</td>
+                  <td>{{ resultado.cargo_ser}}</td>
+                  <td>
+                    <button class="btn-editar"
+                      [routerLink]="'/modificar-transporte/' + resultado.id">MODIFICAR</button>
+                    <button class="btn-borrar" (click)="DeleteTrans(resultado.id)">BORRAR</button>
+                  </td>
+                </tr>
+
+
+              </tbody>
+            </table>
+          </div><!----cierre ng if true-->
+
+          </div><!--  Cierre de ModTransporte text-->
+
+
+
+        </div><!--  Cierre del TextContent-->
+      </div><!--  Cierre del Content-->
+    </div><!--  Cierre del container-->
+
+    <footer>
+
+      <div class="footer-izq">
+
+        <img src="../../../assets/img/logo-footer.png">
+        <div class="parrafo-footer">
+          <p>Con 2 años de experiencia fabricando ventanas de la mejor calidad.</p>
+        </div>
+        <div class="faq"><img src="../../../assets/img/faq.png"><a routerLink="/preguntas-frecuentes">Preguntas
+            Frecuentes</a></div>
+
+      </div>
+      <div class="v-line"></div>
+
+      <div class="footer-der">
+        <h4>Contáctanos</h4>
+        <ul>
+          <li><img src="../../../assets/img/whatsapp.png">+56 965789532</li>
+          <li><img src="../../../assets/img/correo.png"> <a class="btn-mail" routerLink="/contacto">Contáctanos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-centro">
+        <p>Derechos Reservados Ventanas Técnicas 2023 ©</p>
+      </div>
+    </footer>
+  </div><!-------wrap------>
+
+  <script>  document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems);
+    });
+  </script>
+</ion-content>
